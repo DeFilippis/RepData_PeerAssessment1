@@ -65,7 +65,7 @@ meanInterval <- aggregate(steps ~ interval, data= df, mean)
 ggplot(data=meanInterval, aes(x=interval, y=steps, group = 1)) +
   geom_line() 
 ```
-
+![Plot 2](/instructions_fig/mean_plot-1.png)
 
 * Which five-minute interval contains the maximum number of steps?
 ```{r mean_interval}
@@ -104,7 +104,7 @@ qplot(imputedSum$steps,
       binwidth = 3000, 
       col=I("white"))
 ```
-
+![Plot 3](/instructions_fig/impute_sum-1.png)
 * Calculate and report the mean and median total number of steps taken per day.
 ```{r meanMedian}
 mean(imputedSum$steps)
@@ -135,3 +135,4 @@ ggplot(data = newDataInterval, mapping = aes(x = interval, y = meanSteps)) +
   scale_y_continuous("Average Number of Steps") + ggtitle("Average Number of Steps Taken by Interval")
 
 ```
+![Plot 4](/instructions_fig/ggplotthat-1.png)
