@@ -13,7 +13,7 @@ df <- read.csv("activity.csv", colClasses = c("numeric", "Date", "numeric"))
 stepSum <- aggregate(steps ~ date, data= df, sum)
 
 #2.  Plot total via a Histogram
-qplot(stepSum, 
+qplot(stepSum$steps, 
       geom="histogram",
       main = "Histogram for Step Count Per Day",
       binwidth = 3000, 
@@ -74,9 +74,9 @@ imputedData$dayType <- ifelse(weekdays(imputedData$date) %in% c("Satuday", "Sund
 #Create new data frame with mean number of steps taken across all days
 newDataInterval <- imputedData %>% group_by(interval, dayType) %>% summarise(meanSteps = mean(steps))
 
-#plot using ggplot
-plot <- ggplot(data = newDataInterval, mapping = aes(x = interval, y = meanSteps)) + 
-  geom_line() + facet_grid(dayType ~ .) + scale_x_continuous("Day Interval", 
-                                                                 breaks = seq(min(newDataInterval$interval), max(newDataInterval$interval), 100)) + 
+ggplot(data = newDataInterval, mapping = aes(x = interval, y = meanSteps)) + 
+  geom_line() + facet_grid(dayType ~ .) + 
+  scale_x_continuous("Day Interval", 
+  breaks = seq(min(newDataInterval$interval), max(newDataInterval$interval), 100)) + 
   scale_y_continuous("Average Number of Steps") + ggtitle("Average Number of Steps Taken by Interval")
-plot
+
