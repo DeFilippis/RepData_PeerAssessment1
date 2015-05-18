@@ -48,8 +48,9 @@ qplot(stepSum$steps,
       xlab = "Total Steps per Day", 
       col=I("white"))
 
-
 ```
+
+![Plot 1](/instructions_fig/graph-1.png)
       
 * Calculate and report the mean and median of the total number of steps taken per day
 ```{r mean_median}
